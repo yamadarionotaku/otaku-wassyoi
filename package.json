@@ -16,7 +16,7 @@
     "@supabase/supabase-js": "^2.49.4",
     "gray-matter": "file:vendor/gray-matter",
     "next": "16.2.2",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "^6.0.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "zod": "^3.24.4"
