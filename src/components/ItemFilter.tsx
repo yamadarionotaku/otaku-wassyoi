@@ -53,7 +53,7 @@ export function ItemFilter() {
   }
 
   return (
-    <section className="rounded-[1.75rem] border border-zinc-200 bg-white p-5 shadow-sm">
+    <section className="rounded-inner border border-zinc-200 bg-white p-5 shadow-sm">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end">
         <label className="flex min-w-0 flex-1 flex-col gap-2">
           <span className="text-sm font-semibold text-zinc-700">種類</span>

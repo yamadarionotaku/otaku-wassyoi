@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { EmptyState } from "@/components/EmptyState";
 import {
   type ArticleFrontmatter,
   getAllArticles,
@@ -54,7 +55,7 @@ export default function ArticlesPage() {
 
   return (
     <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-10 sm:px-6 lg:px-8">
-      <section className="rounded-[2rem] border border-zinc-200/80 bg-gradient-to-br from-white via-amber-50/40 to-teal-50/60 px-6 py-10 shadow-sm sm:px-10">
+      <section className="rounded-card border border-zinc-200/80 px-6 py-10 shadow-sm sm:px-10" style={{ backgroundImage: 'var(--gradient-hero)' }}>
         <div className="max-w-3xl space-y-4">
           <span className="inline-flex rounded-full bg-white/85 px-3 py-1 text-sm font-semibold text-teal-800 shadow-sm">
             Editorial
@@ -75,7 +76,7 @@ export default function ArticlesPage() {
               <Link
                 key={article.slug}
                 href={`/articles/${article.slug}`}
-                className="group flex h-full flex-col rounded-[1.75rem] border border-zinc-200/80 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-teal-200 hover:shadow-md"
+                className="group flex h-full flex-col rounded-card border border-zinc-200/80 bg-white p-6 shadow-sm transition-[transform,box-shadow] duration-200 ease-out hover:scale-[1.02] hover:shadow-lg"
               >
                 <div className="flex flex-wrap items-center gap-3">
                   <span
@@ -89,9 +90,9 @@ export default function ArticlesPage() {
                 </div>
 
                 <div className="mt-5 flex-1 space-y-3">
-                  <h2 className="text-2xl font-bold tracking-tight text-zinc-950 transition group-hover:text-teal-800">
+                  <h3 className="text-2xl font-bold tracking-tight text-zinc-950 transition group-hover:text-teal-800">
                     {article.title}
-                  </h2>
+                  </h3>
                   <p className="text-sm leading-7 text-zinc-600 sm:text-base">
                     {article.description}
                   </p>
@@ -104,14 +105,10 @@ export default function ArticlesPage() {
             ))}
           </div>
         ) : (
-          <div className="rounded-[1.75rem] border border-dashed border-zinc-200 bg-white px-6 py-12 text-center shadow-sm">
-            <h2 className="text-lg font-semibold text-zinc-900">
-              まだ記事はありません
-            </h2>
-            <p className="mt-3 text-sm leading-7 text-zinc-600">
-              買い方ガイドやレビュー記事は順次公開予定です。
-            </p>
-          </div>
+          <EmptyState
+            message="まだ記事はありません"
+            subMessage="買い方ガイドやレビュー記事は順次公開予定です。"
+          />
         )}
       </section>
     </main>

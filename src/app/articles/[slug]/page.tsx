@@ -155,8 +155,8 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
         }}
       />
 
-      <article className="overflow-hidden rounded-[2rem] border border-zinc-200/80 bg-white shadow-sm">
-        <header className="border-b border-zinc-200/70 bg-gradient-to-br from-white via-amber-50/30 to-teal-50/40 px-6 py-8 sm:px-10 sm:py-10">
+      <article className="overflow-hidden rounded-card border border-zinc-200/80 bg-white shadow-sm">
+        <header className="border-b border-zinc-200/70 px-6 py-8 sm:px-10 sm:py-10" style={{ backgroundImage: 'var(--gradient-hero)' }}>
           <nav
             aria-label="パンくず"
             className="flex flex-wrap items-center gap-2 text-sm text-zinc-500"

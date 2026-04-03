@@ -4,6 +4,7 @@
   --background: #fffdf8;
   --foreground: #27272a;
   --accent: #0f766e;
+  --gradient-hero: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #f0fdf4 100%);
 }
 
 @theme inline {
@@ -13,6 +14,24 @@
   --font-sans: var(--font-noto-sans-jp);
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
+
+  /* Radius — 2段階 */
+  --radius-card: 2rem;
+  --radius-inner: 1rem;
+
+  /* Touch target */
+  --spacing-touch: 44px;
+}
+
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #f59e0b;
+  outline-offset: 2px;
+  border-radius: var(--radius-inner);
 }
 
 html {

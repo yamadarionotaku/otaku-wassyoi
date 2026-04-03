@@ -50,7 +50,7 @@ export function Header() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="inline-flex items-center rounded-full border border-transparent px-4 py-2 text-sm font-medium text-zinc-700 transition-colors hover:border-amber-200 hover:bg-amber-50 hover:text-amber-700"
+                className="min-h-touch inline-flex items-center justify-center rounded-full border border-transparent px-4 py-2 text-sm font-medium text-zinc-700 transition-colors hover:border-amber-200 hover:bg-amber-50 hover:text-amber-700"
               >
                 {item.label}
               </Link>

@@ -8,6 +8,7 @@ import {
   GAME_LABELS,
   ITEM_TYPE_LABELS,
 } from "@/lib/labels";
+import { availabilityClassNames } from "@/lib/badge-styles";
 import { getItem } from "@/lib/queries";
 import { parsePurchaseUrls } from "@/lib/schemas";
 import { getAbsoluteUrl } from "@/lib/site";
@@ -26,13 +27,6 @@ const jpyFormatter = new Intl.NumberFormat("ja-JP", {
 const dateFormatter = new Intl.DateTimeFormat("ja-JP", {
   dateStyle: "long",
 });
-
-const availabilityClassNames: Record<Availability, string> = {
-  preorder: "bg-amber-100 text-amber-800",
-  available: "bg-emerald-100 text-emerald-800",
-  sold_out: "bg-zinc-200 text-zinc-700",
-  unknown: "bg-sky-100 text-sky-800",
-};
 
 const purchaseTypeLabels = {
   official: "公式",
@@ -219,7 +213,7 @@ export default async function ItemDetailPage({ params }: ItemPageProps) {
       />
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-        <section className="overflow-hidden rounded-[2rem] border border-zinc-200/80 bg-white shadow-sm">
+        <section className="overflow-hidden rounded-card border border-zinc-200/80 bg-white shadow-sm">
           <div className="relative aspect-square bg-zinc-100">
             {item.image_url ? (
               <Image
@@ -241,7 +235,7 @@ export default async function ItemDetailPage({ params }: ItemPageProps) {
         </section>
 
         <section className="space-y-6">
-          <div className="rounded-[2rem] border border-zinc-200/80 bg-white p-6 shadow-sm sm:p-8">
+          <div className="rounded-card border border-zinc-200/80 bg-white p-6 shadow-sm sm:p-8">
             <div className="flex flex-wrap items-center gap-3">
               <span
                 className={`rounded-full px-3 py-1 text-sm font-semibold ${availabilityClassNames[item.availability]}`}
@@ -276,7 +270,7 @@ export default async function ItemDetailPage({ params }: ItemPageProps) {
                 </Link>
               </p>
 
-              <dl className="grid gap-4 rounded-[1.5rem] bg-zinc-50 p-5 text-sm sm:grid-cols-2">
+              <dl className="grid gap-4 rounded-inner bg-zinc-50 p-5 text-sm sm:grid-cols-2">
                 <div>
                   <dt className="font-semibold text-zinc-500">価格</dt>
                   <dd className="mt-1 text-base font-semibold text-zinc-900">
@@ -351,7 +345,7 @@ export default async function ItemDetailPage({ params }: ItemPageProps) {
             </div>
           </div>
 
-          <section className="rounded-[2rem] border border-zinc-200/80 bg-white p-6 shadow-sm sm:p-8">
+          <section className="rounded-card border border-zinc-200/80 bg-white p-6 shadow-sm sm:p-8">
             <h2 className="text-lg font-semibold text-zinc-950">説明</h2>
             <p className="mt-4 whitespace-pre-line text-sm leading-8 text-zinc-600">
               {item.description ?? "説明はまだ登録されていません。"}

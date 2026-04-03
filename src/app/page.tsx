@@ -1,3 +1,4 @@
+import { EmptyState } from "@/components/EmptyState";
 import { ItemCard } from "@/components/ItemCard";
 import { ItemFilter } from "@/components/ItemFilter";
 import { AVAILABILITY_VALUES, ITEM_TYPES } from "@/lib/labels";
@@ -37,11 +38,8 @@ export default async function Home({ searchParams }: HomePageProps) {
 
   return (
     <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-10 sm:px-6 lg:px-8">
-      <section className="rounded-[2rem] border border-zinc-200/80 bg-gradient-to-br from-white via-amber-50/50 to-teal-50/80 px-6 py-10 shadow-sm sm:px-10 sm:py-14">
+      <section className="rounded-card border border-zinc-200/80 px-6 py-10 shadow-sm sm:px-10 sm:py-14" style={{ backgroundImage: 'var(--gradient-hero)' }}>
         <div className="max-w-3xl space-y-5">
-          <span className="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold tracking-[0.16em] text-amber-700">
-            PHASE 1 MVP
-          </span>
           <h1 className="text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl">
             中国限定の原神グッズを、日本語で探しやすく。
           </h1>
@@ -76,14 +74,10 @@ export default async function Home({ searchParams }: HomePageProps) {
             ))}
           </div>
         ) : (
-          <div className="rounded-[1.75rem] border border-dashed border-zinc-200 bg-white px-6 py-12 text-center shadow-sm">
-            <h2 className="text-lg font-semibold text-zinc-900">
-              条件に一致するグッズが見つかりませんでした
-            </h2>
-            <p className="mt-3 text-sm leading-7 text-zinc-600">
-              フィルター条件を変更して、別のグッズを探してみてください。
-            </p>
-          </div>
+          <EmptyState
+            message="条件に一致するグッズが見つかりませんでした"
+            subMessage="フィルター条件を変更して、別のグッズを探してみてください。"
+          />
         )}
       </section>
     </main>

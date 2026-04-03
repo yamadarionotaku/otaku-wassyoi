@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { EmptyState } from "@/components/EmptyState";
+import { ItemCard } from "@/components/ItemCard";
 import { GAME_LABELS } from "@/lib/labels";
 import { getCharacter, getItemsByCharacter } from "@/lib/queries";
 import { getAbsoluteUrl } from "@/lib/site";
-import { ItemCard } from "@/components/ItemCard";
 
 type CharacterPageProps = {
   params: Promise<{
@@ -89,7 +90,7 @@ export default async function CharacterDetailPage({
         }}
       />
 
-      <section className="rounded-[2rem] border border-zinc-200/80 bg-gradient-to-br from-white via-amber-50/40 to-teal-50/70 px-6 py-8 shadow-sm sm:px-10 sm:py-10">
+      <section className="rounded-card border border-zinc-200/80 px-6 py-8 shadow-sm sm:px-10 sm:py-10" style={{ backgroundImage: 'var(--gradient-hero)' }}>
         <Link
           href="/characters"
           className="inline-flex items-center text-sm font-semibold text-teal-700 underline-offset-4 hover:underline"
@@ -123,19 +124,14 @@ export default async function CharacterDetailPage({
         {items.length > 0 ? (
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {items.map((item) => (
-              <ItemCard key={item.id} item={item} />
+              <ItemCard key={item.id} item={item} headingLevel="h2" />
             ))}
           </div>
         ) : (
-          <div className="rounded-[1.75rem] border border-dashed border-zinc-200 bg-white px-6 py-12 text-center shadow-sm">
-            <h2 className="text-lg font-semibold text-zinc-900">
-              まだ登録されたグッズがありません
-            </h2>
-            <p className="mt-3 text-sm leading-7 text-zinc-600">
-              {character.name_ja}
-              のグッズデータは準備中です。後日追加予定です。
-            </p>
-          </div>
+          <EmptyState
+            message="まだ登録されたグッズがありません"
+            subMessage={`${character.name_ja}のグッズデータは準備中です。後日追加予定です。`}
+          />
         )}
       </section>
     </main>
