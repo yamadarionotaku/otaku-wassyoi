@@ -1,10 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fffdf8;
-  --foreground: #27272a;
-  --accent: #0f766e;
-  --gradient-hero: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #f0fdf4 100%);
+  --background: #f6f1e6;
+  --foreground: #203047;
+  --accent: #b6945b;
+  --gradient-hero: linear-gradient(135deg, #f6f1e6 0%, #efe5d2 40%, #f0ead4 100%);
+  --color-paper: #f6f1e6;
+  --color-paper-strong: #efe5d2;
+  --color-panel: #fbf8f1;
+  --color-ink: #203047;
+  --color-ink-soft: #50617a;
+  --color-night: #142033;
+  --color-gold: #b6945b;
+  --color-gold-soft: #d9c08a;
+  --color-line: #d9ccb6;
 }
 
 @theme inline {
@@ -12,8 +21,16 @@
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --font-sans: var(--font-noto-sans-jp);
+  --font-serif: var(--font-noto-serif-jp);
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
+  --color-element-anemo: #5ea78f;
+  --color-element-geo: #ba9654;
+  --color-element-electro: #8871c3;
+  --color-element-dendro: #71985a;
+  --color-element-hydro: #4e86c5;
+  --color-element-pyro: #c95d45;
+  --color-element-cryo: #8fc0cc;
 
   /* Radius — 2段階 */
   --radius-card: 2rem;
@@ -29,7 +46,7 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid #f59e0b;
+  outline: 2px solid #8a6632;
   outline-offset: 2px;
   border-radius: var(--radius-inner);
 }
@@ -43,8 +60,104 @@ body {
   color: var(--foreground);
 }
 
+@layer components {
+  .constellation-bg {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .constellation-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle at 14% 22%, rgb(182 148 91 / 0.18) 0 1.2px, transparent 1.7px),
+      radial-gradient(circle at 71% 18%, rgb(142 192 204 / 0.14) 0 1.4px, transparent 1.9px),
+      radial-gradient(circle at 38% 72%, rgb(182 148 91 / 0.14) 0 1.1px, transparent 1.6px),
+      radial-gradient(circle at 84% 68%, rgb(78 134 197 / 0.12) 0 1.5px, transparent 2px),
+      radial-gradient(circle at 24% 48%, rgb(182 148 91 / 0.12) 0 1px, transparent 1.5px);
+    background-size: 220px 180px, 280px 240px, 190px 190px, 260px 220px,
+      160px 160px;
+    opacity: 0.55;
+  }
+
+  .constellation-bg > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .diamond-divider {
+    position: relative;
+    height: 1.5rem;
+  }
+
+  .diamond-divider::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 50%;
+    height: 1px;
+    transform: translateY(-50%);
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgb(182 148 91 / 0.12) 12%,
+      rgb(182 148 91 / 0.48) 50%,
+      rgb(182 148 91 / 0.12) 88%,
+      transparent 100%
+    );
+  }
+
+  .diamond-divider::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0.75rem;
+    height: 0.75rem;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border: 1px solid rgb(182 148 91 / 0.8);
+    background: var(--color-paper);
+    box-shadow: 0 0 0 4px var(--color-panel);
+  }
+
+  .ornate-corners {
+    position: relative;
+  }
+
+  .ornate-corners::before,
+  .ornate-corners::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  .ornate-corners::before {
+    background:
+      linear-gradient(var(--color-gold), var(--color-gold)) left 12px top 12px / 16px 1px no-repeat,
+      linear-gradient(var(--color-gold), var(--color-gold)) left 12px top 12px / 1px 16px no-repeat,
+      linear-gradient(var(--color-gold), var(--color-gold)) right 12px top 12px / 16px 1px no-repeat,
+      linear-gradient(var(--color-gold), var(--color-gold)) right 12px top 12px / 1px 16px no-repeat;
+    opacity: 0.55;
+  }
+
+  .ornate-corners::after {
+    background:
+      linear-gradient(var(--color-gold), var(--color-gold)) left 12px bottom 12px / 16px 1px no-repeat,
+      linear-gradient(var(--color-gold), var(--color-gold)) left 12px bottom 12px / 1px 16px no-repeat,
+      linear-gradient(var(--color-gold), var(--color-gold)) right 12px bottom 12px / 16px 1px no-repeat,
+      linear-gradient(var(--color-gold), var(--color-gold)) right 12px bottom 12px / 1px 16px no-repeat;
+    opacity: 0.55;
+  }
+}
+
 .article-prose {
-  color: #3f3f46;
+  color: var(--color-ink-soft);
   font-size: 1rem;
   line-height: 1.9;
 }
@@ -55,7 +168,7 @@ body {
 
 .article-prose h2,
 .article-prose h3 {
-  color: #18181b;
+  color: var(--color-night);
   font-weight: 700;
   line-height: 1.35;
 }
@@ -74,18 +187,18 @@ body {
 .article-prose ul,
 .article-prose ol,
 .article-prose blockquote {
-  color: #52525b;
+  color: var(--color-ink-soft);
 }
 
 .article-prose a {
-  color: #0f766e;
+  color: var(--color-gold);
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
 .article-prose strong {
-  color: #18181b;
+  color: var(--color-night);
   font-weight: 700;
 }
 
@@ -107,14 +220,15 @@ body {
 }
 
 .article-prose blockquote {
-  border-left: 4px solid #99f6e4;
+  border-left: 4px solid var(--color-gold-soft);
   padding-left: 1rem;
   font-style: italic;
 }
 
 .article-prose code {
   border-radius: 0.35rem;
-  background: #f4f4f5;
+  background: var(--color-paper-strong);
+  color: var(--color-night);
   padding: 0.15rem 0.35rem;
   font-size: 0.92em;
 }
@@ -122,8 +236,8 @@ body {
 .article-prose pre {
   overflow-x: auto;
   border-radius: 1rem;
-  background: #18181b;
-  color: #fafafa;
+  background: var(--color-night);
+  color: #f9f5ec;
   padding: 1rem 1.25rem;
 }
 
@@ -135,7 +249,7 @@ body {
 
 .article-prose hr {
   margin-block: 2rem;
-  border-color: #e4e4e7;
+  border-color: var(--color-line);
 }
 
 .article-prose img {

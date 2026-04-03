@@ -21,33 +21,33 @@ export function ItemCard({ item, headingLevel = "h3" }: ItemCardProps) {
   return (
     <Link
       href={`/items/${item.id}`}
-      className="group block overflow-hidden rounded-card border border-zinc-200/80 bg-white shadow-sm transition-[transform,box-shadow] duration-200 ease-out hover:scale-[1.02] hover:shadow-lg"
+      className="group ornate-corners block overflow-hidden rounded-card border border-[color:var(--color-line)] bg-[color:var(--color-panel)] shadow-[0_12px_30px_rgba(20,32,51,0.06)] transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_20px_40px_rgba(20,32,51,0.12)]"
     >
-      <div className="relative aspect-square overflow-hidden bg-zinc-100">
+      <div className="relative aspect-square overflow-hidden bg-[color:var(--color-paper-strong)]">
         {item.image_url ? (
           <Image
             fill
             alt={item.title_ja}
-            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            className="object-cover transition-transform duration-300 group-hover:scale-[1.01]"
             loader={passthroughImageLoader}
             sizes="(min-width: 1280px) 24rem, (min-width: 768px) 50vw, 100vw"
             src={item.image_url}
             unoptimized
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-zinc-100 via-zinc-50 to-amber-50 px-6 text-center text-sm font-medium text-zinc-500">
+          <div className="constellation-bg flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#efe5d2_0%,#fbf8f1_52%,#f6f1e6_100%)] px-6 text-center text-sm font-medium text-[color:var(--color-ink-soft)]">
             画像準備中
           </div>
         )}
       </div>
 
-      <div className="space-y-4 p-5">
+      <div className="space-y-4 border-t border-[color:var(--color-line)] p-5">
         <div className="flex items-start justify-between gap-3">
           <div className="space-y-2">
-            <p className="text-sm font-medium text-zinc-500">
+            <p className="text-sm font-medium text-[color:var(--color-ink-soft)]">
               {item.characters.name_ja}
             </p>
-            <Heading className="line-clamp-2 text-lg font-bold leading-7 text-zinc-950">
+            <Heading className="font-serif line-clamp-2 text-lg font-semibold leading-7 text-[color:var(--color-night)]">
               {item.title_ja}
             </Heading>
           </div>
@@ -58,16 +58,16 @@ export function ItemCard({ item, headingLevel = "h3" }: ItemCardProps) {
           </span>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2 text-sm text-zinc-600">
-          <span className="rounded-full bg-zinc-100 px-3 py-1 font-medium text-zinc-700">
+        <div className="flex flex-wrap items-center gap-2 text-sm text-[color:var(--color-ink-soft)]">
+          <span className="rounded-full border border-[color:var(--color-line)] bg-[color:var(--color-paper-strong)] px-3 py-1 font-medium text-[color:var(--color-ink-soft)]">
             {ITEM_TYPE_LABELS[item.item_type]}
           </span>
           {item.price_cny !== null ? (
-            <span className="rounded-full bg-amber-50 px-3 py-1 font-semibold text-amber-700">
+            <span className="rounded-full border border-[color:var(--color-gold-soft)] bg-[#b6945b14] px-3 py-1 font-semibold text-[color:var(--color-gold)]">
               CNY {cnyFormatter.format(item.price_cny)}
             </span>
           ) : (
-            <span className="rounded-full bg-zinc-100 px-3 py-1 font-medium text-zinc-500">
+            <span className="rounded-full border border-[color:var(--color-line)] bg-[color:var(--color-paper-strong)] px-3 py-1 font-medium text-[color:var(--color-ink-soft)]">
               価格未登録
             </span>
           )}

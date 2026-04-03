@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP } from "next/font/google";
+import { Noto_Sans_JP, Noto_Serif_JP } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import "./globals.css";
@@ -8,6 +8,14 @@ const notoSansJp = Noto_Sans_JP({
   variable: "--font-noto-sans-jp",
   subsets: ["latin"],
   weight: ["400", "500", "700"],
+  display: "swap",
+});
+
+const notoSerifJp = Noto_Serif_JP({
+  variable: "--font-noto-serif-jp",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  fallback: ["Yu Mincho", "Hiragino Mincho ProN", "serif"],
   display: "swap",
 });
 
@@ -28,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${notoSansJp.variable} h-full bg-background text-foreground antialiased`}
+      className={`${notoSansJp.variable} ${notoSerifJp.variable} h-full bg-background text-foreground antialiased`}
     >
       <body className="min-h-full bg-background font-sans text-foreground">
         <div className="flex min-h-screen flex-col">
