@@ -39,8 +39,8 @@
   --color-element-cryo: #8fc0cc;
 
   /* Radius — 2段階 */
-  --radius-card: 2rem;
-  --radius-inner: 1rem;
+  --radius-card: 1.25rem;
+  --radius-inner: 0.625rem;
 
   /* Touch target */
   --spacing-touch: 44px;
