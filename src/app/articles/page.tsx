@@ -63,7 +63,7 @@ export default function ArticlesPage() {
           <span className="inline-flex rounded-full border border-[color:var(--color-gold-soft)] bg-[#162538] px-3 py-1 text-sm font-semibold text-[color:var(--color-gold)] shadow-sm">
             Editorial
           </span>
-          <h1 className="font-serif text-3xl font-semibold leading-tight text-balance tracking-tight text-[#f0ead4] sm:text-4xl">
+          <h1 className="font-serif text-3xl font-semibold leading-tight tracking-tight text-[#f0ead4] sm:text-4xl">
             記事
           </h1>
           <p className="text-base leading-8 text-[#8c93a3]">

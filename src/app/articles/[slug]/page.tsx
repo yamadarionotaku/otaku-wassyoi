@@ -198,7 +198,7 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
           </div>
 
           <div className="mt-5 space-y-4">
-            <h1 className="font-serif text-3xl font-semibold leading-tight text-balance tracking-tight text-[#f0ead4] sm:text-4xl">
+            <h1 className="font-serif text-3xl font-semibold leading-tight tracking-tight text-[#f0ead4] sm:text-4xl">
               {article.frontmatter.title}
             </h1>
             <p className="max-w-3xl text-base leading-8 text-[#8c93a3]">

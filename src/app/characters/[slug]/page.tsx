@@ -129,7 +129,7 @@ export default async function CharacterDetailPage({
             </span>
           </div>
           <div className="space-y-2">
-            <h1 className="font-serif text-3xl font-semibold leading-tight text-balance tracking-tight text-[#f0ead4] sm:text-4xl">
+            <h1 className="font-serif text-3xl font-semibold leading-tight tracking-tight text-[#f0ead4] sm:text-4xl">
               {character.name_ja}
             </h1>
             <p className="text-base text-[#8c93a3]">

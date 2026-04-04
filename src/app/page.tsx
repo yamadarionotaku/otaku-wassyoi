@@ -47,7 +47,7 @@ export default async function Home({ searchParams }: HomePageProps) {
             <p className="text-sm font-semibold tracking-[0.24em] text-[color:var(--color-gold)]">
               GENSHIN GOODS DISCOVERY
             </p>
-            <h1 className="font-serif text-4xl font-semibold leading-tight text-balance tracking-tight text-[#f0ead4] sm:text-5xl">
+            <h1 className="font-serif text-4xl font-semibold leading-tight tracking-tight text-[#f0ead4] sm:text-5xl">
               中国限定の原神グッズを、日本語で探しやすく。
             </h1>
             <p className="text-base leading-8 text-[#8c93a3] sm:text-lg">

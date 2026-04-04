@@ -50,7 +50,7 @@ export default async function AlibabaPage({ searchParams }: AlibabaPageProps) {
             <p className="text-sm font-semibold tracking-[0.24em] text-[color:var(--color-gold)]">
               ALIBABA SOURCING ARCHIVE
             </p>
-            <h1 className="font-serif text-4xl font-semibold leading-tight text-balance tracking-tight text-[#f0ead4] sm:text-5xl">
+            <h1 className="font-serif text-4xl font-semibold leading-tight tracking-tight text-[#f0ead4] sm:text-5xl">
               Alibaba の仕入れ候補を、カテゴリ別に俯瞰する。
             </h1>
             <p className="text-base leading-8 text-[#8c93a3] sm:text-lg">
