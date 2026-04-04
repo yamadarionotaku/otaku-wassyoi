@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { EmptyState } from "@/components/EmptyState";
 import { ItemCard } from "@/components/ItemCard";
+import { CHARACTER_META, ELEMENT_COLORS } from "@/lib/character-elements";
 import { GAME_LABELS } from "@/lib/labels";
 import { getCharacter, getItemsByCharacter } from "@/lib/queries";
 import { getAbsoluteUrl } from "@/lib/site";
@@ -55,6 +56,11 @@ export default async function CharacterDetailPage({
   }
 
   const items = await getItemsByCharacter(slug);
+  const meta = CHARACTER_META[character.slug];
+  const elementColor = meta ? ELEMENT_COLORS[meta.element] : "var(--color-gold)";
+  const heroBackground = meta
+    ? `radial-gradient(circle at 88% 18%, color-mix(in srgb, ${elementColor} 24%, transparent) 0%, transparent 42%), radial-gradient(circle at 80% 78%, color-mix(in srgb, ${elementColor} 14%, transparent) 0%, transparent 38%), var(--gradient-hero)`
+    : "var(--gradient-hero)";
   const characterUrl = getAbsoluteUrl(`/characters/${character.slug}`);
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -90,31 +96,47 @@ export default async function CharacterDetailPage({
         }}
       />
 
-      <section className="rounded-card border border-zinc-200/80 px-6 py-8 shadow-sm sm:px-10 sm:py-10" style={{ backgroundImage: 'var(--gradient-hero)' }}>
+      <section
+        className="constellation-bg overflow-hidden rounded-card border border-[color:var(--color-line)] px-6 py-8 shadow-[0_16px_36px_rgba(20,32,51,0.08)] sm:px-10 sm:py-10"
+        style={{ backgroundImage: heroBackground }}
+      >
         <Link
           href="/characters"
-          className="inline-flex items-center text-sm font-semibold text-teal-700 underline-offset-4 hover:underline"
+          className="inline-flex items-center text-sm font-semibold text-[color:var(--color-gold)] underline-offset-4 hover:underline"
         >
           キャラクター一覧へ戻る
         </Link>
         <div className="mt-5 space-y-4">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="rounded-full bg-teal-100 px-3 py-1 text-sm font-semibold text-teal-800">
+            <span className="rounded-full border border-[color:var(--color-gold-soft)] bg-[#b6945b14] px-3 py-1 text-sm font-semibold text-[color:var(--color-gold)]">
               {GAME_LABELS[character.game]}
             </span>
-            <span className="rounded-full bg-white/80 px-3 py-1 text-sm font-medium text-zinc-600">
+            {meta ? (
+              <>
+                <span
+                  className="rounded-full border px-3 py-1 text-sm font-semibold"
+                  style={{ borderColor: elementColor, color: elementColor }}
+                >
+                  {meta.elementLabel}
+                </span>
+                <span className="rounded-full border border-[color:var(--color-line)] bg-white/80 px-3 py-1 text-sm font-medium text-[color:var(--color-ink-soft)]">
+                  {meta.regionLabel}
+                </span>
+              </>
+            ) : null}
+            <span className="rounded-full border border-[color:var(--color-line)] bg-white/80 px-3 py-1 text-sm font-medium text-[color:var(--color-ink-soft)]">
               {items.length}件
             </span>
           </div>
           <div className="space-y-2">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-950 sm:text-4xl">
+            <h1 className="font-serif text-3xl font-semibold tracking-tight text-[color:var(--color-night)] sm:text-4xl">
               {character.name_ja}
             </h1>
-            <p className="text-base text-zinc-500">
+            <p className="text-base text-[color:var(--color-ink-soft)]">
               {character.name_en} / {character.name_zh}
             </p>
           </div>
-          <p className="max-w-3xl text-sm leading-8 text-zinc-600 sm:text-base">
+          <p className="max-w-3xl text-sm leading-8 text-[color:var(--color-ink-soft)] sm:text-base">
             {character.name_ja} に関連する中国限定グッズをまとめています。販売状況や詳細は各グッズページで確認できます。
           </p>
         </div>

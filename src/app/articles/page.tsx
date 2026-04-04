@@ -22,7 +22,7 @@ const CATEGORY_LABELS: Record<ArticleFrontmatter["category"], string> = {
 const CATEGORY_CLASS_NAMES: Record<ArticleFrontmatter["category"], string> = {
   review: "bg-amber-100 text-amber-800",
   roundup: "bg-sky-100 text-sky-800",
-  guide: "bg-teal-100 text-teal-800",
+  guide: "border border-[color:var(--color-gold-soft)] bg-[#b6945b14] text-[color:var(--color-gold)]",
   news: "bg-zinc-200 text-zinc-700",
 };
 
@@ -55,15 +55,21 @@ export default function ArticlesPage() {
 
   return (
     <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-10 sm:px-6 lg:px-8">
-      <section className="rounded-card border border-zinc-200/80 px-6 py-10 shadow-sm sm:px-10" style={{ backgroundImage: 'var(--gradient-hero)' }}>
+      <section
+        className="constellation-bg ornate-corners rounded-card border border-[color:var(--color-line)] px-6 py-10 shadow-[0_16px_36px_rgba(20,32,51,0.08)] sm:px-10"
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, rgba(251, 248, 241, 0.98) 0%, rgba(239, 229, 210, 0.92) 100%)",
+        }}
+      >
         <div className="max-w-3xl space-y-4">
-          <span className="inline-flex rounded-full bg-white/85 px-3 py-1 text-sm font-semibold text-teal-800 shadow-sm">
+          <span className="inline-flex rounded-full border border-[color:var(--color-gold-soft)] bg-[color:var(--color-paper)] px-3 py-1 text-sm font-semibold text-[color:var(--color-gold)] shadow-sm">
             Editorial
           </span>
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-950 sm:text-4xl">
+          <h1 className="font-serif text-3xl font-semibold tracking-tight text-[color:var(--color-night)] sm:text-4xl">
             記事
           </h1>
-          <p className="text-base leading-8 text-zinc-600">
+          <p className="text-base leading-8 text-[color:var(--color-ink-soft)]">
             中国限定グッズのレビュー、買い方ガイド、ラウンドアップ記事を日本語でまとめています。購入判断や情報収集の起点として使える内容を順次追加します。
           </p>
         </div>
@@ -76,7 +82,7 @@ export default function ArticlesPage() {
               <Link
                 key={article.slug}
                 href={`/articles/${article.slug}`}
-                className="group flex h-full flex-col rounded-card border border-zinc-200/80 bg-white p-6 shadow-sm transition-[transform,box-shadow] duration-200 ease-out hover:scale-[1.02] hover:shadow-lg"
+                className="group ornate-corners flex h-full flex-col rounded-card border border-[color:var(--color-line)] bg-[color:var(--color-panel)] p-6 shadow-[0_12px_30px_rgba(20,32,51,0.06)] transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_18px_36px_rgba(20,32,51,0.12)]"
               >
                 <div className="flex flex-wrap items-center gap-3">
                   <span
@@ -84,21 +90,21 @@ export default function ArticlesPage() {
                   >
                     {CATEGORY_LABELS[article.category]}
                   </span>
-                  <time className="text-sm font-medium text-zinc-500">
+                  <time className="text-sm font-medium text-[color:var(--color-ink-soft)]">
                     {formatDate(article.publishedAt)}
                   </time>
                 </div>
 
                 <div className="mt-5 flex-1 space-y-3">
-                  <h3 className="text-2xl font-bold tracking-tight text-zinc-950 transition group-hover:text-teal-800">
+                  <h3 className="font-serif text-2xl font-semibold tracking-tight text-[color:var(--color-night)] transition group-hover:text-[color:var(--color-gold)]">
                     {article.title}
                   </h3>
-                  <p className="text-sm leading-7 text-zinc-600 sm:text-base">
+                  <p className="text-sm leading-7 text-[color:var(--color-ink-soft)] sm:text-base">
                     {article.description}
                   </p>
                 </div>
 
-                <p className="mt-6 text-sm font-semibold text-teal-700">
+                <p className="mt-6 text-sm font-semibold text-[color:var(--color-gold)]">
                   記事を読む
                 </p>
               </Link>

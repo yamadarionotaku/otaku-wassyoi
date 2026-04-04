@@ -24,7 +24,7 @@ const CATEGORY_LABELS: Record<ArticleFrontmatter["category"], string> = {
 const CATEGORY_CLASS_NAMES: Record<ArticleFrontmatter["category"], string> = {
   review: "bg-amber-100 text-amber-800",
   roundup: "bg-sky-100 text-sky-800",
-  guide: "bg-teal-100 text-teal-800",
+  guide: "border border-[color:var(--color-gold-soft)] bg-[#b6945b14] text-[color:var(--color-gold)]",
   news: "bg-zinc-200 text-zinc-700",
 };
 
@@ -155,27 +155,33 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
         }}
       />
 
-      <article className="overflow-hidden rounded-card border border-zinc-200/80 bg-white shadow-sm">
-        <header className="border-b border-zinc-200/70 px-6 py-8 sm:px-10 sm:py-10" style={{ backgroundImage: 'var(--gradient-hero)' }}>
+      <article className="overflow-hidden rounded-card border border-[color:var(--color-line)] bg-[color:var(--color-panel)] shadow-[0_18px_40px_rgba(20,32,51,0.08)]">
+        <header
+          className="constellation-bg border-b border-[color:var(--color-line)] px-6 py-8 sm:px-10 sm:py-10"
+          style={{
+            backgroundImage:
+              "linear-gradient(180deg, rgba(251, 248, 241, 0.98) 0%, rgba(239, 229, 210, 0.92) 100%)",
+          }}
+        >
           <nav
             aria-label="パンくず"
-            className="flex flex-wrap items-center gap-2 text-sm text-zinc-500"
+            className="flex flex-wrap items-center gap-2 text-sm text-[color:var(--color-ink-soft)]"
           >
             <Link
               href="/"
-              className="font-medium text-zinc-600 underline-offset-4 hover:text-teal-700 hover:underline"
+              className="font-medium text-[color:var(--color-ink-soft)] underline-offset-4 hover:text-[color:var(--color-gold)] hover:underline"
             >
               トップ
             </Link>
             <span>/</span>
             <Link
               href="/articles"
-              className="font-medium text-zinc-600 underline-offset-4 hover:text-teal-700 hover:underline"
+              className="font-medium text-[color:var(--color-ink-soft)] underline-offset-4 hover:text-[color:var(--color-gold)] hover:underline"
             >
               記事
             </Link>
             <span>/</span>
-            <span className="truncate text-zinc-400">{article.frontmatter.title}</span>
+            <span className="truncate text-[#50617ab3]">{article.frontmatter.title}</span>
           </nav>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -184,21 +190,21 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
             >
               {CATEGORY_LABELS[article.frontmatter.category]}
             </span>
-            <time className="text-sm font-medium text-zinc-500">
+            <time className="text-sm font-medium text-[color:var(--color-ink-soft)]">
               公開: {publishedLabel}
             </time>
             {updatedLabel ? (
-              <time className="text-sm font-medium text-zinc-500">
+              <time className="text-sm font-medium text-[color:var(--color-ink-soft)]">
                 更新: {updatedLabel}
               </time>
             ) : null}
           </div>
 
           <div className="mt-5 space-y-4">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-950 sm:text-4xl">
+            <h1 className="font-serif text-3xl font-semibold tracking-tight text-[color:var(--color-night)] sm:text-4xl">
               {article.frontmatter.title}
             </h1>
-            <p className="max-w-3xl text-base leading-8 text-zinc-600">
+            <p className="max-w-3xl text-base leading-8 text-[color:var(--color-ink-soft)]">
               {article.frontmatter.description}
             </p>
             {article.frontmatter.tags && article.frontmatter.tags.length > 0 ? (
@@ -206,7 +212,7 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
                 {article.frontmatter.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full bg-zinc-100 px-3 py-1 text-sm font-medium text-zinc-600"
+                    className="rounded-full border border-[color:var(--color-line)] bg-[color:var(--color-paper)] px-3 py-1 text-sm font-medium text-[color:var(--color-ink-soft)]"
                   >
                     #{tag}
                   </span>

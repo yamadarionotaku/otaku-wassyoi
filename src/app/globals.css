@@ -169,6 +169,7 @@ body {
 .article-prose h2,
 .article-prose h3 {
   color: var(--color-night);
+  font-family: var(--font-serif);
   font-weight: 700;
   line-height: 1.35;
 }

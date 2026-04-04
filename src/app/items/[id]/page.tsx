@@ -213,99 +213,125 @@ export default async function ItemDetailPage({ params }: ItemPageProps) {
       />
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-        <section className="overflow-hidden rounded-card border border-zinc-200/80 bg-white shadow-sm">
-          <div className="relative aspect-square bg-zinc-100">
-            {item.image_url ? (
-              <Image
-                fill
-                priority
-                alt={item.title_ja}
-                className="object-cover"
-                loader={passthroughImageLoader}
-                sizes="(min-width: 1024px) 58vw, 100vw"
-                src={item.image_url}
-                unoptimized
-              />
-            ) : (
-              <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-zinc-100 via-zinc-50 to-amber-50 text-sm font-medium text-zinc-500">
-                画像準備中
-              </div>
-            )}
+        <section className="ornate-corners overflow-hidden rounded-card border border-[color:var(--color-gold-soft)] bg-[color:var(--color-panel)] p-3 shadow-[0_18px_40px_rgba(20,32,51,0.08)]">
+          <div className="overflow-hidden rounded-inner border border-[#b6945b4d] bg-[color:var(--color-paper-strong)]">
+            <div className="relative aspect-square bg-[color:var(--color-paper-strong)]">
+              {item.image_url ? (
+                <Image
+                  fill
+                  priority
+                  alt={item.title_ja}
+                  className="object-cover"
+                  loader={passthroughImageLoader}
+                  sizes="(min-width: 1024px) 58vw, 100vw"
+                  src={item.image_url}
+                  unoptimized
+                />
+              ) : (
+                <div
+                  className="constellation-bg flex h-full w-full items-center justify-center text-sm font-medium text-[color:var(--color-ink-soft)]"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(135deg, rgba(239, 229, 210, 0.98) 0%, rgba(251, 248, 241, 0.98) 52%, rgba(246, 241, 230, 1) 100%)",
+                  }}
+                >
+                  画像準備中
+                </div>
+              )}
+            </div>
           </div>
         </section>
 
         <section className="space-y-6">
-          <div className="rounded-card border border-zinc-200/80 bg-white p-6 shadow-sm sm:p-8">
+          <div
+            className="ornate-corners rounded-card border border-[color:var(--color-line)] p-6 shadow-[0_16px_36px_rgba(20,32,51,0.08)] sm:p-8"
+            style={{
+              backgroundImage:
+                "linear-gradient(180deg, rgba(251, 248, 241, 0.98) 0%, rgba(239, 229, 210, 0.88) 100%)",
+            }}
+          >
             <div className="flex flex-wrap items-center gap-3">
               <span
                 className={`rounded-full px-3 py-1 text-sm font-semibold ${availabilityClassNames[item.availability]}`}
               >
                 {AVAILABILITY_LABELS[item.availability]}
               </span>
-              <span className="rounded-full bg-zinc-100 px-3 py-1 text-sm font-medium text-zinc-700">
+              <span className="rounded-full border border-[color:var(--color-line)] bg-[color:var(--color-paper)] px-3 py-1 text-sm font-medium text-[color:var(--color-ink-soft)]">
                 {ITEM_TYPE_LABELS[item.item_type]}
               </span>
-              <span className="rounded-full bg-teal-50 px-3 py-1 text-sm font-medium text-teal-700">
+              <span className="rounded-full border border-[color:var(--color-gold-soft)] bg-[#b6945b14] px-3 py-1 text-sm font-medium text-[color:var(--color-gold)]">
                 {GAME_LABELS[item.game]}
               </span>
             </div>
 
             <div className="mt-5 space-y-4">
               <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tight text-zinc-950 sm:text-4xl">
+                <h1 className="font-serif text-3xl font-semibold tracking-tight text-[color:var(--color-night)] sm:text-4xl">
                   {item.title_ja}
                 </h1>
                 {item.title_zh ? (
-                  <p className="text-base text-zinc-500">{item.title_zh}</p>
+                  <p className="text-base text-[color:var(--color-ink-soft)]">
+                    {item.title_zh}
+                  </p>
                 ) : null}
               </div>
 
-              <p className="text-sm text-zinc-600">
+              <p className="text-sm text-[color:var(--color-ink-soft)]">
                 キャラクター:{" "}
                 <Link
                   href={`/characters/${item.characters.slug}`}
-                  className="font-semibold text-teal-700 underline-offset-4 hover:underline"
+                  className="font-semibold text-[color:var(--color-gold)] underline-offset-4 hover:underline"
                 >
                   {item.characters.name_ja}
                 </Link>
               </p>
 
-              <dl className="grid gap-4 rounded-inner bg-zinc-50 p-5 text-sm sm:grid-cols-2">
+              <dl className="grid gap-4 rounded-inner border border-[color:var(--color-line)] bg-[color:var(--color-paper)] p-5 text-sm sm:grid-cols-2">
                 <div>
-                  <dt className="font-semibold text-zinc-500">価格</dt>
-                  <dd className="mt-1 text-base font-semibold text-zinc-900">
+                  <dt className="font-semibold text-[color:var(--color-ink-soft)]">
+                    価格
+                  </dt>
+                  <dd className="mt-1 text-base font-semibold text-[color:var(--color-night)]">
                     {item.price_cny !== null
                       ? `CNY ${cnyFormatter.format(item.price_cny)}`
                       : "未登録"}
                     {estimatedPrice ? (
-                      <span className="ml-2 text-sm font-medium text-zinc-500">
+                      <span className="ml-2 text-sm font-medium text-[color:var(--color-ink-soft)]">
                         ({estimatedPrice} 目安)
                       </span>
                     ) : null}
                   </dd>
                 </div>
                 <div>
-                  <dt className="font-semibold text-zinc-500">販売元</dt>
-                  <dd className="mt-1 text-base text-zinc-900">
+                  <dt className="font-semibold text-[color:var(--color-ink-soft)]">
+                    販売元
+                  </dt>
+                  <dd className="mt-1 text-base text-[color:var(--color-night)]">
                     {item.source ?? "未登録"}
                   </dd>
                 </div>
                 <div>
-                  <dt className="font-semibold text-zinc-500">発売日</dt>
-                  <dd className="mt-1 text-base text-zinc-900">
+                  <dt className="font-semibold text-[color:var(--color-ink-soft)]">
+                    発売日
+                  </dt>
+                  <dd className="mt-1 text-base text-[color:var(--color-night)]">
                     {formatDate(item.release_date)}
                   </dd>
                 </div>
                 <div>
-                  <dt className="font-semibold text-zinc-500">最終確認日</dt>
-                  <dd className="mt-1 text-base text-zinc-900">
+                  <dt className="font-semibold text-[color:var(--color-ink-soft)]">
+                    最終確認日
+                  </dt>
+                  <dd className="mt-1 text-base text-[color:var(--color-night)]">
                     {formatDate(item.last_verified_at)}
                   </dd>
                 </div>
               </dl>
 
               <div className="space-y-3">
-                <h2 className="text-lg font-semibold text-zinc-950">購入先</h2>
+                <h2 className="font-serif text-xl font-semibold text-[color:var(--color-night)]">
+                  購入先
+                </h2>
                 {purchaseUrls.length > 0 ? (
                   <div className="space-y-3">
                     <ul className="space-y-3">
@@ -315,29 +341,29 @@ export default async function ItemDetailPage({ params }: ItemPageProps) {
                             href={purchaseUrl.url}
                             rel="nofollow noopener noreferrer"
                             target="_blank"
-                            className="flex items-center justify-between rounded-2xl border border-zinc-200 bg-zinc-50 px-4 py-3 transition hover:border-amber-200 hover:bg-amber-50"
+                            className="min-h-touch flex items-center justify-between rounded-inner border border-[color:var(--color-gold-soft)] bg-[color:var(--color-paper)] px-4 py-3 transition hover:border-[color:var(--color-gold)] hover:bg-[#b6945b14]"
                           >
                             <span>
-                              <span className="mr-2 rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-zinc-600">
+                              <span className="mr-2 rounded-full border border-[color:var(--color-line)] bg-white px-2.5 py-1 text-xs font-semibold text-[color:var(--color-ink-soft)]">
                                 {purchaseTypeLabels[purchaseUrl.type]}
                               </span>
-                              <span className="font-medium text-zinc-900">
+                              <span className="font-medium text-[color:var(--color-night)]">
                                 {purchaseUrl.label}
                               </span>
                             </span>
-                            <span className="text-sm font-semibold text-teal-700">
+                            <span className="text-sm font-semibold text-[color:var(--color-gold)]">
                               外部サイトへ
                             </span>
                           </a>
                         </li>
                       ))}
                     </ul>
-                    <p className="text-xs leading-6 text-zinc-500">
+                    <p className="text-xs leading-6 text-[color:var(--color-ink-soft)]">
                       ※アフィリエイトリンクを含みます
                     </p>
                   </div>
                 ) : (
-                  <p className="rounded-2xl border border-dashed border-zinc-200 bg-zinc-50 px-4 py-5 text-sm text-zinc-500">
+                  <p className="rounded-inner border border-dashed border-[color:var(--color-line)] bg-[color:var(--color-paper)] px-4 py-5 text-sm text-[color:var(--color-ink-soft)]">
                     現在掲載できる購入先リンクはありません。
                   </p>
                 )}
@@ -345,9 +371,17 @@ export default async function ItemDetailPage({ params }: ItemPageProps) {
             </div>
           </div>
 
-          <section className="rounded-card border border-zinc-200/80 bg-white p-6 shadow-sm sm:p-8">
-            <h2 className="text-lg font-semibold text-zinc-950">説明</h2>
-            <p className="mt-4 whitespace-pre-line text-sm leading-8 text-zinc-600">
+          <section
+            className="ornate-corners rounded-card border border-[color:var(--color-line)] p-6 shadow-[0_16px_36px_rgba(20,32,51,0.08)] sm:p-8"
+            style={{
+              backgroundImage:
+                "linear-gradient(180deg, rgba(246, 241, 230, 0.98) 0%, rgba(251, 248, 241, 0.98) 100%)",
+            }}
+          >
+            <h2 className="font-serif text-xl font-semibold text-[color:var(--color-night)]">
+              説明
+            </h2>
+            <p className="mt-4 whitespace-pre-line text-sm leading-8 text-[color:var(--color-ink-soft)]">
               {item.description ?? "説明はまだ登録されていません。"}
             </p>
           </section>
