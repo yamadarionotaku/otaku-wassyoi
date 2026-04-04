@@ -46,17 +46,23 @@ export default async function AlibabaPage({ searchParams }: AlibabaPageProps) {
         style={{ backgroundImage: "var(--gradient-hero)" }}
       >
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.82fr)] lg:items-center">
-          <div className="max-w-3xl space-y-5">
+          <div className="max-w-3xl">
             <p className="text-sm font-semibold tracking-[0.24em] text-[color:var(--color-gold)]">
               ALIBABA SOURCING ARCHIVE
             </p>
-            <h1 className="font-serif text-4xl font-semibold leading-tight tracking-tight text-[#f0ead4] sm:text-5xl">
+            <h1 className="mt-5 font-serif text-4xl font-semibold leading-tight tracking-tight text-[#f0ead4] sm:text-5xl">
               Alibaba の仕入れ候補を、カテゴリ別に俯瞰する。
             </h1>
-            <p className="text-base leading-8 text-[#8c93a3] sm:text-lg">
+            <p className="mt-5 text-base leading-8 text-[#8c93a3] sm:text-lg">
               アクスタ、フィギュア、缶バッジ、痛バッグ、抱き枕など、
               Alibaba.com から収集した候補商品を横断で確認できます。
             </p>
+            <a
+              href="#sourcing-list"
+              className="mt-6 inline-flex min-h-touch items-center justify-center rounded-inner border border-[#b6945b30] bg-[#162538] px-6 py-3 text-base font-medium text-[#d9ccb6] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] transition-[border-color,background-color,color,box-shadow] hover:border-[color:var(--color-gold-soft)] hover:bg-[#1e3350] hover:text-[#f0ead4] hover:shadow-[0_10px_22px_rgba(20,32,51,0.08)]"
+            >
+              仕入れ候補を見る
+            </a>
           </div>
 
           <div
@@ -106,7 +112,10 @@ export default async function AlibabaPage({ searchParams }: AlibabaPageProps) {
       <section className="space-y-5">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="font-serif text-3xl font-semibold leading-tight tracking-tight text-[#f0ead4]">
+            <h2
+              id="sourcing-list"
+              className="font-serif text-3xl font-semibold leading-tight tracking-tight text-[#f0ead4]"
+            >
               仕入れ候補一覧
             </h2>
             <p className="mt-2 text-sm text-[#8c93a3]">

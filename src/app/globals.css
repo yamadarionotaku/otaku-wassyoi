@@ -59,6 +59,7 @@ textarea:focus-visible {
 
 html {
   color-scheme: dark;
+  scroll-behavior: smooth;
 }
 
 body {
