@@ -9,7 +9,6 @@ type NavigationItem = {
 const navigationItems: NavigationItem[] = [
   { href: "/", label: "グッズ一覧" },
   { href: "/characters", label: "キャラ別" },
-  { href: "/alibaba", label: "仕入れ情報" },
   { href: "/articles", label: "記事" },
 ];
 

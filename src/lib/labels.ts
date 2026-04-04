@@ -3,6 +3,9 @@ import type { Availability, Game, ItemType } from "@/types";
 export const ITEM_TYPES = [
   "figure",
   "acrylic_stand",
+  "can_badge",
+  "itabag",
+  "dakimakura",
   "plush",
   "apparel",
   "stationery",
@@ -25,6 +28,9 @@ export const GAME_VALUES = [
 export const ITEM_TYPE_LABELS: Record<ItemType, string> = {
   figure: "フィギュア",
   acrylic_stand: "アクリルスタンド",
+  can_badge: "缶バッジ",
+  itabag: "痛バッグ",
+  dakimakura: "抱き枕",
   plush: "ぬいぐるみ",
   apparel: "アパレル",
   stationery: "文房具",

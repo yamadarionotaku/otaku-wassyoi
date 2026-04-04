@@ -13,7 +13,7 @@ import type {
 
 const ITEM_WITH_CHARACTER_SELECT = `
   *,
-  characters!inner (
+  characters!left (
     name_ja,
     name_en,
     slug
@@ -25,13 +25,13 @@ type ItemFilters = {
   itemType?: ItemType;
   characterSlug?: string;
   availability?: Availability;
+  source?: string;
 };
 
+type ItemCharacterRelation = NonNullable<ItemWithCharacter["characters"]>;
+
 type ItemWithRelation = Omit<ItemWithCharacter, "characters"> & {
-  characters:
-    | ItemWithCharacter["characters"]
-    | ItemWithCharacter["characters"][]
-    | null;
+  characters: ItemCharacterRelation | ItemCharacterRelation[] | null;
 };
 
 function normalizeItem(item: ItemWithRelation): ItemWithCharacter {
@@ -39,13 +39,9 @@ function normalizeItem(item: ItemWithRelation): ItemWithCharacter {
     ? item.characters[0]
     : item.characters;
 
-  if (!character) {
-    throw new Error(`Item ${item.id} is missing its related character.`);
-  }
-
   return {
     ...item,
-    characters: character,
+    characters: character ?? undefined,
   };
 }
 
@@ -71,6 +67,10 @@ export async function getItems(
     query = query.eq("availability", filters.availability);
   }
 
+  if (filters.source) {
+    query = query.eq("source", filters.source);
+  }
+
   if (filters.characterSlug) {
     query = query.eq("characters.slug", filters.characterSlug);
   }
@@ -83,6 +83,16 @@ export async function getItems(
   }
 
   return ((data ?? []) as ItemWithRelation[]).map(normalizeItem);
+}
+
+export async function getAllGoods(
+  filters: ItemFilters = {},
+): Promise<ItemWithCharacter[]> {
+  const itemFilters = { ...filters };
+
+  delete itemFilters.source;
+
+  return getItems(itemFilters);
 }
 
 export async function getItem(id: string): Promise<ItemWithCharacter | null> {

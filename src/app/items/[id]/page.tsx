@@ -76,9 +76,10 @@ export async function generateMetadata({
     };
   }
 
+  const characterLabel = item.characters?.name_ja ?? "Alibaba 仕入れ商品";
   const description =
     item.description ??
-    `${item.characters.name_ja}の${ITEM_TYPE_LABELS[item.item_type]}「${item.title_ja}」の詳細ページです。`;
+    `${characterLabel}の${ITEM_TYPE_LABELS[item.item_type]}「${item.title_ja}」の詳細ページです。`;
   const itemUrl = getAbsoluteUrl(`/items/${item.id}`);
 
   return {
@@ -119,6 +120,9 @@ export default async function ItemDetailPage({ params }: ItemPageProps) {
       : null;
   const schemaAvailability = getSchemaAvailability(item.availability);
   const itemUrl = getAbsoluteUrl(`/items/${item.id}`);
+  const characterName = item.characters?.name_ja;
+  const characterSlug = item.characters?.slug;
+  const characterLabel = characterName ?? "Alibaba 仕入れ商品";
 
   const productJsonLd = {
     "@context": "https://schema.org",
@@ -127,7 +131,7 @@ export default async function ItemDetailPage({ params }: ItemPageProps) {
     alternateName: item.title_zh ?? undefined,
     description:
       item.description ??
-      `${item.characters.name_ja}の${ITEM_TYPE_LABELS[item.item_type]}。`,
+      `${characterLabel}の${ITEM_TYPE_LABELS[item.item_type]}。`,
     image: item.image_url ? [item.image_url] : undefined,
     category: ITEM_TYPE_LABELS[item.item_type],
     sku: item.id,
@@ -154,11 +158,15 @@ export default async function ItemDetailPage({ params }: ItemPageProps) {
         }
       : undefined,
     additionalProperty: [
-      {
-        "@type": "PropertyValue",
-        name: "Character",
-        value: item.characters.name_ja,
-      },
+      ...(characterName
+        ? [
+            {
+              "@type": "PropertyValue",
+              name: "Character",
+              value: characterName,
+            },
+          ]
+        : []),
       {
         "@type": "PropertyValue",
         name: "Game",
@@ -270,15 +278,21 @@ export default async function ItemDetailPage({ params }: ItemPageProps) {
                 ) : null}
               </div>
 
-              <p className="text-sm text-[#50617a]">
-                キャラクター:{" "}
-                <Link
-                  href={`/characters/${item.characters.slug}`}
-                  className="font-semibold text-[color:var(--color-gold)] underline-offset-4 hover:underline"
-                >
-                  {item.characters.name_ja}
-                </Link>
-              </p>
+              {characterName && characterSlug ? (
+                <p className="text-sm text-[#50617a]">
+                  キャラクター:{" "}
+                  <Link
+                    href={`/characters/${characterSlug}`}
+                    className="font-semibold text-[color:var(--color-gold)] underline-offset-4 hover:underline"
+                  >
+                    {characterName}
+                  </Link>
+                </p>
+              ) : (
+                <p className="text-sm text-[#50617a]">
+                  分類: Alibaba 仕入れ商品
+                </p>
+              )}
 
               <dl className="grid gap-4 rounded-inner border border-[#e5e7eb] bg-[#f8fafc] p-5 text-sm sm:grid-cols-2">
                 <div>

@@ -107,11 +107,14 @@ export type Database = {
           id: string;
           title_ja: string;
           title_zh: string | null;
-          character_id: string;
+          character_id: string | null;
           game: "genshin" | "starrail" | "wutheringwaves";
           item_type:
             | "figure"
             | "acrylic_stand"
+            | "can_badge"
+            | "itabag"
+            | "dakimakura"
             | "plush"
             | "apparel"
             | "stationery"
@@ -119,8 +122,13 @@ export type Database = {
           source: string | null;
           price_cny: number | null;
           price_jpy_estimate: number | null;
+          price_min_usd: number | null;
+          price_max_usd: number | null;
           image_url: string | null;
+          seller_name: string | null;
+          source_keyword: string | null;
           purchase_urls: Json;
+          raw_json: Json | null;
           release_date: string | null;
           is_china_exclusive: boolean;
           availability: "preorder" | "available" | "sold_out" | "unknown";
@@ -133,11 +141,14 @@ export type Database = {
           id?: string;
           title_ja: string;
           title_zh?: string | null;
-          character_id: string;
+          character_id?: string | null;
           game?: "genshin" | "starrail" | "wutheringwaves";
           item_type:
             | "figure"
             | "acrylic_stand"
+            | "can_badge"
+            | "itabag"
+            | "dakimakura"
             | "plush"
             | "apparel"
             | "stationery"
@@ -145,8 +156,13 @@ export type Database = {
           source?: string | null;
           price_cny?: number | null;
           price_jpy_estimate?: number | null;
+          price_min_usd?: number | null;
+          price_max_usd?: number | null;
           image_url?: string | null;
+          seller_name?: string | null;
+          source_keyword?: string | null;
           purchase_urls?: Json;
+          raw_json?: Json | null;
           release_date?: string | null;
           is_china_exclusive?: boolean;
           availability?: "preorder" | "available" | "sold_out" | "unknown";
@@ -159,11 +175,14 @@ export type Database = {
           id?: string;
           title_ja?: string;
           title_zh?: string | null;
-          character_id?: string;
+          character_id?: string | null;
           game?: "genshin" | "starrail" | "wutheringwaves";
           item_type?:
             | "figure"
             | "acrylic_stand"
+            | "can_badge"
+            | "itabag"
+            | "dakimakura"
             | "plush"
             | "apparel"
             | "stationery"
@@ -171,8 +190,13 @@ export type Database = {
           source?: string | null;
           price_cny?: number | null;
           price_jpy_estimate?: number | null;
+          price_min_usd?: number | null;
+          price_max_usd?: number | null;
           image_url?: string | null;
+          seller_name?: string | null;
+          source_keyword?: string | null;
           purchase_urls?: Json;
+          raw_json?: Json | null;
           release_date?: string | null;
           is_china_exclusive?: boolean;
           availability?: "preorder" | "available" | "sold_out" | "unknown";

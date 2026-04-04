@@ -18,5 +18,5 @@ export type PurchaseUrl = {
 };
 
 export type ItemWithCharacter = Item & {
-  characters: Pick<Character, "name_ja" | "name_en" | "slug">;
+  characters?: Pick<Character, "name_ja" | "name_en" | "slug">;
 };

@@ -17,7 +17,10 @@ function getSingleValue(value: string | string[] | undefined) {
 }
 
 function isItemType(value: string | undefined): value is ItemType {
-  return value !== undefined && ITEM_TYPES.includes(value as ItemType);
+  return (
+    value !== undefined &&
+    ITEM_TYPES.includes(value as (typeof ITEM_TYPES)[number])
+  );
 }
 
 function isAvailability(value: string | undefined): value is Availability {
