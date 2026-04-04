@@ -1,4 +1,4 @@
-import Image, { type ImageLoaderProps } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 
 import { availabilityClassNames } from "@/lib/badge-styles";
@@ -10,7 +10,6 @@ const cnyFormatter = new Intl.NumberFormat("ja-JP", {
   maximumFractionDigits: 0,
 });
 
-const passthroughImageLoader = ({ src }: ImageLoaderProps) => src;
 
 type ItemCardProps = {
   item: ItemWithCharacter;
@@ -35,7 +34,7 @@ export function ItemCard({ item, headingLevel = "h3" }: ItemCardProps) {
             fill
             alt={item.title_ja}
             className="object-cover transition-transform duration-300 group-hover:scale-[1.01]"
-            loader={passthroughImageLoader}
+
             sizes="(min-width: 1280px) 24rem, (min-width: 768px) 50vw, 100vw"
             src={item.image_url}
             unoptimized
