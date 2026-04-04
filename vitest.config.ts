@@ -12,6 +12,6 @@ export default defineConfig({
   },
   test: {
     environment: "node",
-    exclude: ["e2e/**", "node_modules/**"],
+    exclude: ["e2e/**", "node_modules/**", ".agents/**", ".claude/**"],
   },
 });
