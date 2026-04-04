@@ -1,0 +1,65 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -lc 'if [ -f \"$CLAUDE_PROJECT_DIR/CLAUDE.compact.md\" ]; then cat \"$CLAUDE_PROJECT_DIR/CLAUDE.compact.md\"; elif [ -f \"$CLAUDE_PROJECT_DIR/CLAUDE.md\" ]; then cat \"$CLAUDE_PROJECT_DIR/CLAUDE.md\"; else echo \"Reminder: compact context file not found. Default mode is PM/Codex, except during explicit gstack slash-command turns.\"; fi'"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/read-deduper.py"
+          }
+        ]
+      }
+    ],
+    "InstructionsLoaded": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/read-deduper.py"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/route-operating-mode.py"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/read-deduper.py"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/read-deduper.py"
+          }
+        ]
+      }
+    ]
+  }
+}
