@@ -20,7 +20,7 @@ export default async function CharactersPage() {
         className="rounded-card border border-[#b6945b30] px-6 py-8 shadow-[0_16px_36px_rgba(20,32,51,0.08)] sm:px-10 sm:py-10"
         style={{ backgroundImage: "var(--gradient-hero)" }}
       >
-        <h1 className="font-serif text-3xl font-semibold tracking-tight text-[#f0ead4] sm:text-4xl">
+        <h1 className="font-serif text-3xl font-semibold leading-tight tracking-tight text-[#f0ead4] sm:text-4xl">
           キャラクター一覧
         </h1>
         <p className="mt-4 max-w-3xl text-sm leading-8 text-[#8c93a3] sm:text-base">

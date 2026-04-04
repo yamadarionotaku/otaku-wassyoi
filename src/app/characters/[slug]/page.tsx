@@ -129,7 +129,7 @@ export default async function CharacterDetailPage({
             </span>
           </div>
           <div className="space-y-2">
-            <h1 className="font-serif text-3xl font-semibold tracking-tight text-[#f0ead4] sm:text-4xl">
+            <h1 className="font-serif text-3xl font-semibold leading-tight tracking-tight text-[#f0ead4] sm:text-4xl">
               {character.name_ja}
             </h1>
             <p className="text-base text-[#8c93a3]">
@@ -145,7 +145,7 @@ export default async function CharacterDetailPage({
       <section className="mt-8 space-y-5">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="font-serif text-2xl font-semibold tracking-tight text-[#f0ead4] sm:text-3xl">
+            <h2 className="font-serif text-2xl font-semibold leading-tight tracking-tight text-[#f0ead4] sm:text-3xl">
               関連グッズ
             </h2>
             <p className="mt-2 text-sm text-[#8c93a3]">

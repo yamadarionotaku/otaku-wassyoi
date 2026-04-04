@@ -260,7 +260,7 @@ export default async function ItemDetailPage({ params }: ItemPageProps) {
 
             <div className="mt-5 space-y-4">
               <div className="space-y-2">
-                <h1 className="font-serif text-3xl font-semibold tracking-tight text-[#1c2023] sm:text-4xl">
+                <h1 className="font-serif text-3xl font-semibold leading-tight tracking-tight text-[#1c2023] sm:text-4xl">
                   {item.title_ja}
                 </h1>
                 {item.title_zh ? (
