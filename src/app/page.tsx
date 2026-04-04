@@ -37,9 +37,9 @@ export default async function Home({ searchParams }: HomePageProps) {
   const items = await getItems({ itemType, availability });
 
   return (
-    <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-10 sm:px-6 lg:px-8">
+    <main className="mx-auto flex w-full flex-1 flex-col px-4 py-10 sm:px-6 lg:px-12 xl:px-20">
       <section
-        className="overflow-hidden rounded-card border border-[color:var(--color-line)] px-6 py-10 shadow-[0_18px_40px_rgba(20,32,51,0.08)] sm:px-10 sm:py-14"
+        className="overflow-hidden rounded-card border border-[#b6945b30] px-6 py-10 shadow-[0_18px_40px_rgba(20,32,51,0.08)] sm:px-10 sm:py-14"
         style={{ backgroundImage: "var(--gradient-hero)" }}
       >
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.82fr)] lg:items-center">
@@ -47,20 +47,20 @@ export default async function Home({ searchParams }: HomePageProps) {
             <p className="text-sm font-semibold tracking-[0.24em] text-[color:var(--color-gold)]">
               GENSHIN GOODS DISCOVERY
             </p>
-            <h1 className="font-serif text-4xl font-semibold tracking-tight text-[color:var(--color-night)] sm:text-5xl">
+            <h1 className="font-serif text-4xl font-semibold tracking-tight text-[#f0ead4] sm:text-5xl">
               中国限定の原神グッズを、日本語で探しやすく。
             </h1>
-            <p className="text-base leading-8 text-[color:var(--color-ink-soft)] sm:text-lg">
-              おたくわっしょいは、中国限定のフィギュア、アクリルスタンド、
+            <p className="text-base leading-8 text-[#8c93a3] sm:text-lg">
+              星拾いの崖は、中国限定のフィギュア、アクリルスタンド、
               ぬいぐるみなどのグッズ情報を日本語で整理して届けるディスカバリーサイトです。
             </p>
           </div>
 
           <div
-            className="constellation-bg relative min-h-[280px] overflow-hidden rounded-card border border-[color:var(--color-line)]"
+            className="constellation-bg relative min-h-[280px] overflow-hidden rounded-card border border-[#b6945b30]"
             style={{
               backgroundImage:
-                "radial-gradient(circle at 50% 45%, rgba(182, 148, 91, 0.18) 0%, rgba(182, 148, 91, 0) 42%), linear-gradient(145deg, rgba(251, 248, 241, 0.98) 0%, rgba(239, 229, 210, 0.94) 52%, rgba(246, 241, 230, 0.98) 100%)",
+                "radial-gradient(circle at 50% 45%, rgba(182, 148, 91, 0.12) 0%, rgba(182, 148, 91, 0) 42%), linear-gradient(145deg, rgba(14, 26, 43, 0.98) 0%, rgba(20, 32, 51, 0.94) 52%, rgba(26, 42, 66, 0.98) 100%)",
             }}
           >
             <div className="pointer-events-none absolute inset-0">
@@ -81,10 +81,10 @@ export default async function Home({ searchParams }: HomePageProps) {
       <section className="space-y-5">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="font-serif text-3xl font-semibold tracking-tight text-[color:var(--color-night)]">
+            <h2 className="font-serif text-3xl font-semibold tracking-tight text-[#f0ead4]">
               グッズ一覧
             </h2>
-            <p className="mt-2 text-sm text-[color:var(--color-ink-soft)]">
+            <p className="mt-2 text-sm text-[#8c93a3]">
               フィギュア、アクリルスタンド、ぬいぐるみなどの中国限定グッズを一覧で確認できます。
             </p>
           </div>

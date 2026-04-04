@@ -59,7 +59,7 @@ export default async function CharacterDetailPage({
   const meta = CHARACTER_META[character.slug];
   const elementColor = meta ? ELEMENT_COLORS[meta.element] : "var(--color-gold)";
   const heroBackground = meta
-    ? `radial-gradient(circle at 88% 18%, color-mix(in srgb, ${elementColor} 24%, transparent) 0%, transparent 42%), radial-gradient(circle at 80% 78%, color-mix(in srgb, ${elementColor} 14%, transparent) 0%, transparent 38%), var(--gradient-hero)`
+    ? `radial-gradient(circle at 88% 18%, color-mix(in srgb, ${elementColor} 20%, transparent) 0%, transparent 38%), radial-gradient(circle at 14% 82%, color-mix(in srgb, ${elementColor} 14%, transparent) 0%, transparent 34%), linear-gradient(145deg, color-mix(in srgb, ${elementColor} 10%, #0a1420) 0%, #142033 48%, #1a2a42 100%)`
     : "var(--gradient-hero)";
   const characterUrl = getAbsoluteUrl(`/characters/${character.slug}`);
   const breadcrumbJsonLd = {
@@ -88,7 +88,7 @@ export default async function CharacterDetailPage({
   };
 
   return (
-    <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-10 sm:px-6 lg:px-8">
+    <main className="mx-auto flex w-full flex-1 flex-col px-4 py-10 sm:px-6 lg:px-12 xl:px-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -97,7 +97,7 @@ export default async function CharacterDetailPage({
       />
 
       <section
-        className="constellation-bg overflow-hidden rounded-card border border-[color:var(--color-line)] px-6 py-8 shadow-[0_16px_36px_rgba(20,32,51,0.08)] sm:px-10 sm:py-10"
+        className="constellation-bg overflow-hidden rounded-card border border-[#b6945b30] px-6 py-8 shadow-[0_16px_36px_rgba(20,32,51,0.08)] sm:px-10 sm:py-10"
         style={{ backgroundImage: heroBackground }}
       >
         <Link
@@ -119,30 +119,44 @@ export default async function CharacterDetailPage({
                 >
                   {meta.elementLabel}
                 </span>
-                <span className="rounded-full border border-[color:var(--color-line)] bg-white/80 px-3 py-1 text-sm font-medium text-[color:var(--color-ink-soft)]">
+                <span className="rounded-full border border-[#2a3a50] bg-[#162538] px-3 py-1 text-sm font-medium text-[#d9ccb6]">
                   {meta.regionLabel}
                 </span>
               </>
             ) : null}
-            <span className="rounded-full border border-[color:var(--color-line)] bg-white/80 px-3 py-1 text-sm font-medium text-[color:var(--color-ink-soft)]">
+            <span className="rounded-full border border-[#2a3a50] bg-[#162538] px-3 py-1 text-sm font-medium text-[#d9ccb6]">
               {items.length}件
             </span>
           </div>
           <div className="space-y-2">
-            <h1 className="font-serif text-3xl font-semibold tracking-tight text-[color:var(--color-night)] sm:text-4xl">
+            <h1 className="font-serif text-3xl font-semibold tracking-tight text-[#f0ead4] sm:text-4xl">
               {character.name_ja}
             </h1>
-            <p className="text-base text-[color:var(--color-ink-soft)]">
+            <p className="text-base text-[#8c93a3]">
               {character.name_en} / {character.name_zh}
             </p>
           </div>
-          <p className="max-w-3xl text-sm leading-8 text-[color:var(--color-ink-soft)] sm:text-base">
+          <p className="max-w-3xl text-sm leading-8 text-[#8c93a3] sm:text-base">
             {character.name_ja} に関連する中国限定グッズをまとめています。販売状況や詳細は各グッズページで確認できます。
           </p>
         </div>
       </section>
 
-      <section className="mt-8">
+      <section className="mt-8 space-y-5">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 className="font-serif text-2xl font-semibold tracking-tight text-[#f0ead4] sm:text-3xl">
+              関連グッズ
+            </h2>
+            <p className="mt-2 text-sm text-[#8c93a3]">
+              {character.name_ja} に関連する中国限定グッズの一覧です。
+            </p>
+          </div>
+          <p className="text-sm font-medium text-[color:var(--color-gold)]">
+            {items.length}件
+          </p>
+        </div>
+
         {items.length > 0 ? (
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {items.map((item) => (

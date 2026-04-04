@@ -131,11 +131,11 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
     inLanguage: "ja-JP",
     author: {
       "@type": "Organization",
-      name: "おたくわっしょい",
+      name: "星拾いの崖",
     },
     publisher: {
       "@type": "Organization",
-      name: "おたくわっしょい",
+      name: "星拾いの崖",
       url: getAbsoluteUrl("/"),
     },
   };
@@ -155,33 +155,30 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
         }}
       />
 
-      <article className="overflow-hidden rounded-card border border-[color:var(--color-line)] bg-[color:var(--color-panel)] shadow-[0_18px_40px_rgba(20,32,51,0.08)]">
+      <article className="space-y-6">
         <header
-          className="constellation-bg border-b border-[color:var(--color-line)] px-6 py-8 sm:px-10 sm:py-10"
-          style={{
-            backgroundImage:
-              "linear-gradient(180deg, rgba(251, 248, 241, 0.98) 0%, rgba(239, 229, 210, 0.92) 100%)",
-          }}
+          className="constellation-bg overflow-hidden rounded-card border border-[#b6945b30] px-6 py-8 shadow-[0_18px_40px_rgba(0,0,0,0.24)] sm:px-10 sm:py-10"
+          style={{ backgroundImage: "var(--gradient-hero)" }}
         >
           <nav
             aria-label="パンくず"
-            className="flex flex-wrap items-center gap-2 text-sm text-[color:var(--color-ink-soft)]"
+            className="flex flex-wrap items-center gap-2 text-sm text-[#8c93a3]"
           >
             <Link
               href="/"
-              className="font-medium text-[color:var(--color-ink-soft)] underline-offset-4 hover:text-[color:var(--color-gold)] hover:underline"
+              className="font-medium text-[#8c93a3] underline-offset-4 hover:text-[color:var(--color-gold)] hover:underline"
             >
               トップ
             </Link>
             <span>/</span>
             <Link
               href="/articles"
-              className="font-medium text-[color:var(--color-ink-soft)] underline-offset-4 hover:text-[color:var(--color-gold)] hover:underline"
+              className="font-medium text-[#8c93a3] underline-offset-4 hover:text-[color:var(--color-gold)] hover:underline"
             >
               記事
             </Link>
             <span>/</span>
-            <span className="truncate text-[#50617ab3]">{article.frontmatter.title}</span>
+            <span className="truncate text-[#d9ccb6]">{article.frontmatter.title}</span>
           </nav>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -190,21 +187,21 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
             >
               {CATEGORY_LABELS[article.frontmatter.category]}
             </span>
-            <time className="text-sm font-medium text-[color:var(--color-ink-soft)]">
+            <time className="text-sm font-medium text-[#8c93a3]">
               公開: {publishedLabel}
             </time>
             {updatedLabel ? (
-              <time className="text-sm font-medium text-[color:var(--color-ink-soft)]">
+              <time className="text-sm font-medium text-[#8c93a3]">
                 更新: {updatedLabel}
               </time>
             ) : null}
           </div>
 
           <div className="mt-5 space-y-4">
-            <h1 className="font-serif text-3xl font-semibold tracking-tight text-[color:var(--color-night)] sm:text-4xl">
+            <h1 className="font-serif text-3xl font-semibold tracking-tight text-[#f0ead4] sm:text-4xl">
               {article.frontmatter.title}
             </h1>
-            <p className="max-w-3xl text-base leading-8 text-[color:var(--color-ink-soft)]">
+            <p className="max-w-3xl text-base leading-8 text-[#8c93a3]">
               {article.frontmatter.description}
             </p>
             {article.frontmatter.tags && article.frontmatter.tags.length > 0 ? (
@@ -212,7 +209,7 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
                 {article.frontmatter.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-[color:var(--color-line)] bg-[color:var(--color-paper)] px-3 py-1 text-sm font-medium text-[color:var(--color-ink-soft)]"
+                    className="rounded-full border border-[#2a3a50] bg-[#162538] px-3 py-1 text-sm font-medium text-[#d9ccb6]"
                   >
                     #{tag}
                   </span>
@@ -222,7 +219,7 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
           </div>
         </header>
 
-        <div className="px-6 py-8 sm:px-10 sm:py-10">
+        <div className="rounded-card border border-[#e5e7eb] bg-white px-6 py-8 shadow-[0_18px_40px_rgba(20,32,51,0.08)] sm:px-10 sm:py-10">
           <div className="article-prose max-w-none">
             <MDXRemote source={article.content} />
           </div>

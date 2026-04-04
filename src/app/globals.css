@@ -1,26 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f6f1e6;
-  --foreground: #203047;
+  --background: #0e1a2b;
+  --foreground: #e8e0d0;
   --accent: #b6945b;
-  --gradient-hero: linear-gradient(135deg, #f6f1e6 0%, #efe5d2 40%, #f0ead4 100%);
-  --color-paper: #f6f1e6;
-  --color-paper-strong: #efe5d2;
-  --color-panel: #fbf8f1;
-  --color-ink: #203047;
-  --color-ink-soft: #50617a;
-  --color-night: #142033;
+  --gradient-hero: linear-gradient(135deg, #0a1420 0%, #142033 40%, #1a2a42 100%);
+  --color-paper: #0e1a2b;
+  --color-paper-strong: #162538;
+  --color-panel: #ffffff;
+  --color-ink: #e8e0d0;
+  --color-ink-soft: #8c93a3;
+  --color-night: #0a1420;
   --color-gold: #b6945b;
   --color-gold-soft: #d9c08a;
-  --color-line: #d9ccb6;
+  --color-line: #2a3a50;
+  --color-card-text: #1c2023;
+  --color-card-text-soft: #50617a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
-  --font-sans: var(--font-noto-sans-jp);
+  --color-card-text: var(--color-card-text);
+  --font-sans: "游ゴシック体", YuGothic, "ヒラギノ角ゴ Pro",
+    "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
   --font-serif: var(--font-noto-serif-jp);
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
@@ -46,7 +52,7 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid #8a6632;
+  outline: 2px solid #d9c08a;
   outline-offset: 2px;
   border-radius: var(--radius-inner);
 }
@@ -58,6 +64,58 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  isolation: isolate;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--background);
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(255, 255, 255, 0.25) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 67% 5%, rgba(182, 148, 91, 0.3) 0 1.8px, transparent 2.3px),
+    radial-gradient(circle at 89% 12%, rgba(255, 255, 255, 0.2) 0 1.3px, transparent 1.8px),
+    radial-gradient(circle at 34% 22%, rgba(123, 177, 255, 0.25) 0 1.6px, transparent 2.1px),
+    radial-gradient(circle at 78% 35%, rgba(124, 119, 184, 0.2) 0 1.4px, transparent 1.9px),
+    radial-gradient(circle at 5% 45%, rgba(255, 255, 255, 0.18) 0 1.2px, transparent 1.7px),
+    radial-gradient(circle at 45% 52%, rgba(182, 148, 91, 0.22) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 92% 58%, rgba(123, 177, 255, 0.2) 0 1.3px, transparent 1.8px),
+    radial-gradient(circle at 23% 68%, rgba(255, 255, 255, 0.22) 0 1.4px, transparent 1.9px),
+    radial-gradient(circle at 56% 75%, rgba(124, 119, 184, 0.18) 0 1.2px, transparent 1.7px),
+    radial-gradient(circle at 81% 82%, rgba(182, 148, 91, 0.2) 0 1.6px, transparent 2.1px),
+    radial-gradient(circle at 15% 90%, rgba(255, 255, 255, 0.15) 0 1.1px, transparent 1.6px),
+    radial-gradient(circle at 8% 15%, rgba(255, 255, 255, 0.12) 0 0.9px, transparent 1.4px),
+    radial-gradient(circle at 25% 3%, rgba(255, 255, 255, 0.1) 0 0.8px, transparent 1.3px),
+    radial-gradient(circle at 42% 11%, rgba(123, 177, 255, 0.1) 0 0.7px, transparent 1.2px),
+    radial-gradient(circle at 55% 28%, rgba(255, 255, 255, 0.1) 0 0.8px, transparent 1.3px),
+    radial-gradient(circle at 71% 19%, rgba(182, 148, 91, 0.1) 0 0.7px, transparent 1.2px),
+    radial-gradient(circle at 18% 38%, rgba(255, 255, 255, 0.08) 0 0.7px, transparent 1.2px),
+    radial-gradient(circle at 38% 42%, rgba(124, 119, 184, 0.1) 0 0.8px, transparent 1.3px),
+    radial-gradient(circle at 62% 48%, rgba(255, 255, 255, 0.1) 0 0.7px, transparent 1.2px),
+    radial-gradient(circle at 85% 45%, rgba(123, 177, 255, 0.08) 0 0.6px, transparent 1.1px),
+    radial-gradient(circle at 30% 55%, rgba(255, 255, 255, 0.1) 0 0.8px, transparent 1.3px),
+    radial-gradient(circle at 48% 62%, rgba(182, 148, 91, 0.08) 0 0.7px, transparent 1.2px),
+    radial-gradient(circle at 73% 68%, rgba(255, 255, 255, 0.1) 0 0.7px, transparent 1.2px),
+    radial-gradient(circle at 10% 75%, rgba(124, 119, 184, 0.08) 0 0.6px, transparent 1.1px),
+    radial-gradient(circle at 40% 85%, rgba(255, 255, 255, 0.08) 0 0.7px, transparent 1.2px),
+    radial-gradient(circle at 65% 92%, rgba(123, 177, 255, 0.1) 0 0.8px, transparent 1.3px),
+    radial-gradient(circle at 90% 88%, rgba(255, 255, 255, 0.1) 0 0.7px, transparent 1.2px),
+    radial-gradient(ellipse at 30% 40%, rgba(123, 177, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 60%, rgba(124, 119, 184, 0.03) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 20%, rgba(182, 148, 91, 0.02) 0%, transparent 40%);
+  background-size:
+    800px 600px, 900px 700px, 750px 550px, 850px 650px, 700px 500px,
+    950px 750px, 800px 600px, 650px 480px, 900px 680px, 750px 570px,
+    850px 630px, 700px 520px, 500px 400px, 450px 380px, 520px 420px,
+    480px 390px, 550px 440px, 470px 370px, 530px 430px, 490px 400px,
+    510px 410px, 460px 380px, 540px 435px, 500px 405px, 520px 415px,
+    480px 395px, 550px 445px, 470px 385px, 100% 100%, 100% 100%,
+    100% 100%;
 }
 
 @layer components {
@@ -104,9 +162,9 @@ body {
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgb(182 148 91 / 0.12) 12%,
-      rgb(182 148 91 / 0.48) 50%,
-      rgb(182 148 91 / 0.12) 88%,
+      rgb(217 192 138 / 0.18) 12%,
+      rgb(217 192 138 / 0.62) 50%,
+      rgb(217 192 138 / 0.18) 88%,
       transparent 100%
     );
   }
@@ -120,8 +178,8 @@ body {
     height: 0.75rem;
     transform: translate(-50%, -50%) rotate(45deg);
     border: 1px solid rgb(182 148 91 / 0.8);
-    background: var(--color-paper);
-    box-shadow: 0 0 0 4px var(--color-panel);
+    background: var(--background);
+    box-shadow: 0 0 0 4px var(--background);
   }
 
   .ornate-corners {
@@ -143,7 +201,7 @@ body {
       linear-gradient(var(--color-gold), var(--color-gold)) left 12px top 12px / 1px 16px no-repeat,
       linear-gradient(var(--color-gold), var(--color-gold)) right 12px top 12px / 16px 1px no-repeat,
       linear-gradient(var(--color-gold), var(--color-gold)) right 12px top 12px / 1px 16px no-repeat;
-    opacity: 0.55;
+    opacity: 0.8;
   }
 
   .ornate-corners::after {
@@ -152,12 +210,12 @@ body {
       linear-gradient(var(--color-gold), var(--color-gold)) left 12px bottom 12px / 1px 16px no-repeat,
       linear-gradient(var(--color-gold), var(--color-gold)) right 12px bottom 12px / 16px 1px no-repeat,
       linear-gradient(var(--color-gold), var(--color-gold)) right 12px bottom 12px / 1px 16px no-repeat;
-    opacity: 0.55;
+    opacity: 0.8;
   }
 }
 
 .article-prose {
-  color: var(--color-ink-soft);
+  color: var(--color-card-text-soft);
   font-size: 1rem;
   line-height: 1.9;
 }
@@ -168,7 +226,7 @@ body {
 
 .article-prose h2,
 .article-prose h3 {
-  color: var(--color-night);
+  color: var(--color-card-text);
   font-family: var(--font-serif);
   font-weight: 700;
   line-height: 1.35;
@@ -188,7 +246,7 @@ body {
 .article-prose ul,
 .article-prose ol,
 .article-prose blockquote {
-  color: var(--color-ink-soft);
+  color: var(--color-card-text-soft);
 }
 
 .article-prose a {
@@ -199,7 +257,7 @@ body {
 }
 
 .article-prose strong {
-  color: var(--color-night);
+  color: var(--color-card-text);
   font-weight: 700;
 }
 
@@ -228,8 +286,8 @@ body {
 
 .article-prose code {
   border-radius: 0.35rem;
-  background: var(--color-paper-strong);
-  color: var(--color-night);
+  background: #f0ead4;
+  color: var(--color-card-text);
   padding: 0.15rem 0.35rem;
   font-size: 0.92em;
 }
@@ -250,7 +308,7 @@ body {
 
 .article-prose hr {
   margin-block: 2rem;
-  border-color: var(--color-line);
+  border-color: #e5e7eb;
 }
 
 .article-prose img {

@@ -21,9 +21,9 @@ export function ItemCard({ item, headingLevel = "h3" }: ItemCardProps) {
   return (
     <Link
       href={`/items/${item.id}`}
-      className="group ornate-corners block overflow-hidden rounded-card border border-[color:var(--color-line)] bg-[color:var(--color-panel)] shadow-[0_12px_30px_rgba(20,32,51,0.06)] transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_20px_40px_rgba(20,32,51,0.12)]"
+      className="group ornate-corners block overflow-hidden rounded-card border border-[#e5e7eb] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)]"
     >
-      <div className="relative aspect-square overflow-hidden bg-[color:var(--color-paper-strong)]">
+      <div className="relative aspect-square overflow-hidden bg-[#f8fafc]">
         {item.image_url ? (
           <Image
             fill
@@ -35,19 +35,19 @@ export function ItemCard({ item, headingLevel = "h3" }: ItemCardProps) {
             unoptimized
           />
         ) : (
-          <div className="constellation-bg flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#efe5d2_0%,#fbf8f1_52%,#f6f1e6_100%)] px-6 text-center text-sm font-medium text-[color:var(--color-ink-soft)]">
+          <div className="constellation-bg flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#f0ead4_0%,#fbf7ee_52%,#f6f1e6_100%)] px-6 text-center text-sm font-medium text-[#50617a]">
             画像準備中
           </div>
         )}
       </div>
 
-      <div className="space-y-4 border-t border-[color:var(--color-line)] p-5">
+      <div className="space-y-4 border-t border-[#e5e7eb] p-5">
         <div className="flex items-start justify-between gap-3">
           <div className="space-y-2">
-            <p className="text-sm font-medium text-[color:var(--color-ink-soft)]">
+            <p className="text-sm font-medium text-[#50617a]">
               {item.characters.name_ja}
             </p>
-            <Heading className="font-serif line-clamp-2 text-lg font-semibold leading-7 text-[color:var(--color-night)]">
+            <Heading className="font-serif line-clamp-2 text-lg font-semibold leading-7 text-[#1c2023]">
               {item.title_ja}
             </Heading>
           </div>
@@ -58,8 +58,8 @@ export function ItemCard({ item, headingLevel = "h3" }: ItemCardProps) {
           </span>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2 text-sm text-[color:var(--color-ink-soft)]">
-          <span className="rounded-full border border-[color:var(--color-line)] bg-[color:var(--color-paper-strong)] px-3 py-1 font-medium text-[color:var(--color-ink-soft)]">
+        <div className="flex flex-wrap items-center gap-2 text-sm text-[#50617a]">
+          <span className="rounded-full border border-[#d9dde5] bg-[#f8fafc] px-3 py-1 font-medium text-[#50617a]">
             {ITEM_TYPE_LABELS[item.item_type]}
           </span>
           {item.price_cny !== null ? (
@@ -67,7 +67,7 @@ export function ItemCard({ item, headingLevel = "h3" }: ItemCardProps) {
               CNY {cnyFormatter.format(item.price_cny)}
             </span>
           ) : (
-            <span className="rounded-full border border-[color:var(--color-line)] bg-[color:var(--color-paper-strong)] px-3 py-1 font-medium text-[color:var(--color-ink-soft)]">
+            <span className="rounded-full border border-[#d9dde5] bg-[#f8fafc] px-3 py-1 font-medium text-[#50617a]">
               価格未登録
             </span>
           )}

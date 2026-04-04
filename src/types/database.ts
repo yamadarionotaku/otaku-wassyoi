@@ -9,6 +9,66 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      alibaba_items: {
+        Row: {
+          id: string;
+          title: string;
+          price_min_usd: number | null;
+          price_max_usd: number | null;
+          image_url: string | null;
+          product_url: string;
+          seller_name: string | null;
+          source_keyword: string;
+          item_category:
+            | "acrylic_stand"
+            | "figure"
+            | "can_badge"
+            | "itabag"
+            | "dakimakura";
+          raw_json: Json;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          title: string;
+          price_min_usd?: number | null;
+          price_max_usd?: number | null;
+          image_url?: string | null;
+          product_url: string;
+          seller_name?: string | null;
+          source_keyword: string;
+          item_category:
+            | "acrylic_stand"
+            | "figure"
+            | "can_badge"
+            | "itabag"
+            | "dakimakura";
+          raw_json: Json;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          title?: string;
+          price_min_usd?: number | null;
+          price_max_usd?: number | null;
+          image_url?: string | null;
+          product_url?: string;
+          seller_name?: string | null;
+          source_keyword?: string;
+          item_category?:
+            | "acrylic_stand"
+            | "figure"
+            | "can_badge"
+            | "itabag"
+            | "dakimakura";
+          raw_json?: Json;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
       characters: {
         Row: {
           id: string;

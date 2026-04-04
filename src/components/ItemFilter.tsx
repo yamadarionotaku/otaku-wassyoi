@@ -53,15 +53,15 @@ export function ItemFilter() {
   }
 
   return (
-    <section className="constellation-bg ornate-corners rounded-card border border-[color:var(--color-line)] bg-[color:var(--color-panel)] p-5 shadow-[0_12px_26px_rgba(20,32,51,0.05)]">
+    <section className="ornate-corners rounded-card border border-[#e5e7eb] bg-white p-5 shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
       <div aria-hidden="true" className="diamond-divider mb-4" />
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end">
         <label className="flex min-w-0 flex-1 flex-col gap-2">
-          <span className="text-sm font-semibold text-[color:var(--color-ink)]">
+          <span className="text-sm font-semibold text-[#1c2023]">
             種類
           </span>
           <select
-            className="min-h-touch rounded-inner border border-[color:var(--color-line)] bg-[color:var(--color-paper)] px-4 py-3 text-sm text-[color:var(--color-night)] shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] outline-none transition-[border-color,background-color,box-shadow] focus:border-[color:var(--color-gold)] focus:bg-[color:var(--color-panel)]"
+            className="min-h-touch rounded-inner border border-[#d9dde5] bg-[#f8fafc] px-4 py-3 text-sm text-[#1c2023] shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] outline-none transition-[border-color,background-color,box-shadow] focus:border-[color:var(--color-gold)] focus:bg-white"
             disabled={isPending}
             onChange={(event) => updateParam("item_type", event.target.value)}
             value={selectedItemType}
@@ -75,11 +75,11 @@ export function ItemFilter() {
         </label>
 
         <label className="flex min-w-0 flex-1 flex-col gap-2">
-          <span className="text-sm font-semibold text-[color:var(--color-ink)]">
+          <span className="text-sm font-semibold text-[#1c2023]">
             販売状況
           </span>
           <select
-            className="min-h-touch rounded-inner border border-[color:var(--color-line)] bg-[color:var(--color-paper)] px-4 py-3 text-sm text-[color:var(--color-night)] shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] outline-none transition-[border-color,background-color,box-shadow] focus:border-[color:var(--color-gold)] focus:bg-[color:var(--color-panel)]"
+            className="min-h-touch rounded-inner border border-[#d9dde5] bg-[#f8fafc] px-4 py-3 text-sm text-[#1c2023] shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] outline-none transition-[border-color,background-color,box-shadow] focus:border-[color:var(--color-gold)] focus:bg-white"
             disabled={isPending}
             onChange={(event) =>
               updateParam("availability", event.target.value)

@@ -2,6 +2,8 @@ import "server-only";
 
 import { createPublicClient } from "@/lib/supabase/public";
 import type {
+  AlibabaItem,
+  AlibabaItemCategory,
   Availability,
   Character,
   Game,
@@ -142,4 +144,29 @@ export async function getItemsByCharacter(
   slug: string,
 ): Promise<ItemWithCharacter[]> {
   return getItems({ characterSlug: slug });
+}
+
+export async function getAlibabaItems(
+  category?: AlibabaItemCategory,
+): Promise<AlibabaItem[]> {
+  const supabase = createPublicClient();
+
+  let query = supabase
+    .from("alibaba_items")
+    .select("*")
+    .order("item_category", { ascending: true })
+    .order("title", { ascending: true });
+
+  if (category) {
+    query = query.eq("item_category", category);
+  }
+
+  const { data, error } = await query;
+
+  if (error) {
+    console.error(`Failed to fetch Alibaba items: ${error.message}`);
+    return [];
+  }
+
+  return data ?? [];
 }

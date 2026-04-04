@@ -50,3 +50,4 @@ screenshots/
 # mcp config (contains API tokens)
 .mcp.json
 .gstack/
+.env.local
