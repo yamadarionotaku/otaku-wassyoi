@@ -352,3 +352,39 @@ DB 投入後、Claude は以下の順で進める。
 - 並列化するのは Phase 1 の収集ワーカーと Phase 2 の Layer 2 判定ワーカーのみ。
 - Layer 3 の重複除去と Phase 3 の最終監査は、必ず Layer 2 のマージ完了後に実行する。
 - 収集件数よりも混入率の低さを優先する。迷う候補は残さない。
+
+## 8. cron 自動実行
+
+### 前提条件
+- PC がつけっぱなしであること（WSL が動作していること）
+- Claude Code CLI がインストールされ、認証済みであること
+- Node.js と npm が利用可能であること
+
+### セットアップ
+
+1. crontab に登録:
+   ```bash
+   crontab -e
+   # 毎週月曜 AM 3:00 に実行
+   0 3 * * 1 cd /home/yamadarion/projects/otaku-wassyoi && bash scripts/cron-alibaba-collect.sh >> logs/cron-alibaba.log 2>&1
+   ```
+
+2. 動作確認:
+   ```bash
+   bash scripts/cron-alibaba-collect.sh
+   ```
+
+### ログ
+- 実行ログ: `logs/cron-alibaba.log`（追記モード）
+- 実行サマリ: `logs/cron-alibaba-{date}.log`
+- 各実行のタイムスタンプ付きで開始・終了・結果を記録
+
+### 二重起動防止
+- `/tmp/alibaba-collect.lock` で排他制御
+- 前回の実行が完了していない場合はスキップ
+
+### トラブルシューティング
+- Claude Code CLI の認証が切れている場合: `claude auth login` を手動で実行
+- cron 環境で `claude` コマンドが見つからない場合: スクリプト内で `~/.local/bin` を含む `PATH` を明示しているか確認
+- Codex MCP が応答しない場合: Claude Code を再起動
+- ログが肥大化した場合: `logs/cron-alibaba.log` を手動で truncate

@@ -51,3 +51,4 @@ screenshots/
 .mcp.json
 .gstack/
 .env.local
+logs/*.log
